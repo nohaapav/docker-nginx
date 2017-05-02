@@ -1,3 +1,4 @@
 #!/usr/bin/with-contenv sh
 
+#exec ep /etc/nginx/conf.d/default.conf;
 exec nginx;
