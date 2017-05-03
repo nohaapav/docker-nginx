@@ -35,10 +35,8 @@ docker service create \
 FROM nohaapav/nginx:latest
 MAINTAINER John Doe <john.doe@email.com>
 
-# Add cert
-
-COPY certs/cloud.csas.cz.key /etc/nginx/certs/cloud.csas.cz.key
-COPY certs/cloud.csas.cz.crt /etc/nginx/certs/cloud.csas.cz.crt
+# Add certs
+ADD certs /etc/nginx/certs
 ```
 2. Build image ``docker build -t custom/nginx:latest .``
 3. Run
