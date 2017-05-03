@@ -52,7 +52,7 @@ docker service create \
 ```
 
 ### Original image with volume
-1. Run (I've used my current folder for example therefore source is ``${PWD}``)
+1. Run (I've used my current folder with certificates therefore source is ``${PWD}``)
 ```{r, engine='bash', count_lines}
 docker service create \
   --network gnet \
