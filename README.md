@@ -1,5 +1,5 @@
 # docker-nginx
-Simple Alpine s6 based Nginx with SSL termination & envplate support used primary for swarm cluster.
+Lightweight Alpine s6 based Nginx with SSL termination & envplate support used primary for swarm cluster.
 
 ## Prerequisites 
 
