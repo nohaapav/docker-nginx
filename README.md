@@ -4,7 +4,7 @@ Simple Alpine s6 based Nginx with SSL termination & envplate support used primar
 ## Prerequisites 
 
 * docker 1.13 + (swarm mode)
-* nginx must be in same overlay network as proxied service (DNS service discovery)
+* nginx service must be in same overlay network as proxied service (DNS service discovery)
 * certificate must match domain name
 
 ## Setup
