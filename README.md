@@ -13,7 +13,7 @@ You have 3 options how to deal with setup.
 
 ### Custom image
 
-1. Fetch repository
+1. Clone repository
 2. Copy ``test.domain.com.key`` and ``test.domain.com.crt`` files into ``/root/etc/nginx/certs``
 3. Build image ``docker build -t custom/nginx:latest .``
 4. Run
