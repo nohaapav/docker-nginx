@@ -9,55 +9,16 @@ Lightweight Alpine s6 based Nginx with SSL termination & envplate support used p
 
 ## Setup
 
-You have 3 options how to deal with setup.
-
-### Custom image
-
-1. Clone repository
-2. Copy ``test.domain.com.key`` and ``test.domain.com.crt`` files into ``/root/etc/nginx/certs``
-3. Build image ``docker build -t custom/nginx:latest .``
+1. Generate certificate
+2. Create secret key ``docker secret create test.domain.com.key test.domain.com.key``
+3. Create secret crt ``docker secret create test.domain.com.crt test.domain.com.crt``
 4. Run
 ```{r, engine='bash', count_lines}
 docker service create \
   --network gnet \
   --name nginx \
-  --env SERVICE_URL=service:8080 \
-  --env SERVICE_DOMAIN=test.domain.com \
-  --publish 88:80 \
-  --publish 443:443 \
-  custom/nginx:latest
-```
-
-### From original image
-
-1. Create Dockefile & certs folder containing certificate
-```{r, engine='bash', count_lines}
-FROM nohaapav/nginx:latest
-MAINTAINER John Doe <john.doe@email.com>
-
-# Add certs
-ADD certs /etc/nginx/certs
-```
-2. Build image ``docker build -t custom/nginx:latest .``
-3. Run
-```{r, engine='bash', count_lines}
-docker service create \
-  --network gnet \
-  --name nginx \
-  --env SERVICE_URL=service:8080 \
-  --env SERVICE_DOMAIN=test.domain.com \
-  --publish 88:80 \
-  --publish 443:443 \
-  custom/nginx:latest
-```
-
-### Original image with volume
-1. Run (I've used my current folder with certificates therefore source is ``${PWD}``)
-```{r, engine='bash', count_lines}
-docker service create \
-  --network gnet \
-  --name nginx \
-  --mount=type=bind,src=${PWD},dst=/etc/nginx/certs \
+  --secret test.domain.com.key \
+  --secret test.domain.com.crt \
   --env SERVICE_URL=service:8080 \
   --env SERVICE_DOMAIN=test.domain.com \
   --publish 88:80 \
