@@ -21,7 +21,7 @@ docker service create \
   --secret test.domain.com.crt \
   --env SERVICE_URL=service:8080 \
   --env SERVICE_DOMAIN=test.domain.com \
-  --publish 88:80 \
+  --publish 80:80 \
   --publish 443:443 \
   nohaapav/nginx:latest
 ```
